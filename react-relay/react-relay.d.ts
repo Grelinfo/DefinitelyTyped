@@ -51,11 +51,15 @@ declare module "react-relay" {
 
     interface RelayNetworkLayer {
         supports(...options: string[]): boolean
+        sendMutation(mutationRequest: RelayMutationRequest): void|Promise<any>
+        sendQueries(queryRequests: RelayQueryRequest[]): void|Promise<any>
     }
 
     class DefaultNetworkLayer implements RelayNetworkLayer {
         constructor(host: string, options: any)
         supports(...options: string[]): boolean
+        sendMutation(mutationRequest: RelayMutationRequest): void|Promise<any>
+        sendQueries(queryRequests: RelayQueryRequest[]): void|Promise<any>
     }
 
     function createContainer<T>(component: React.ComponentClass<T>, params?: CreateContainerOpts): RelayContainerClass<any>
